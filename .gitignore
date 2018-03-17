@@ -1,0 +1,9 @@
+
+####################
+# DEPLOYMENT FILES #
+####################
+
+# ignore the token for github deployment
+deploy-tokens.php
+# ignore the executed commands (security reason)
+deploy-commands.php
