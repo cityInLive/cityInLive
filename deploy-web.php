@@ -17,34 +17,6 @@
 
 		// Run the commands for output
 		$output = '';
-	/**
-	 * GIT DEPLOYMENT SCRIPT
-	 *
-	 * Used for automatically deploying websites via github or bitbucket, more deets here:
-	 *
-	 *		https://gist.github.com/1809044
-	 */
-
-	if($_GET['token'] == $deploy_web_token) {
-		// The commands
-		$commands = $deploy_web_commands; 
-
-		// Run the commands for output
-		$output = '';
-	/**
-	 * GIT DEPLOYMENT SCRIPT
-	 *
-	 * Used for automatically deploying websites via github or bitbucket, more deets here:
-	 *
-	 *		https://gist.github.com/1809044
-	 */
-
-	if($_GET['token'] == $deploy_web_token) {
-		// The commands
-		$commands = $deploy_web_commands; 
-
-		// Run the commands for output
-		$output = '';
 		foreach($commands AS $command){
 			// Run it
 			$tmp = shell_exec($command);
