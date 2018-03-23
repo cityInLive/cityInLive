@@ -12,6 +12,7 @@ angular.module('liveCityApp')
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
-      'Karma'
+      'Karma',
+	  'Test'
     ];
   });
