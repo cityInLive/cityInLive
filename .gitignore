@@ -4,6 +4,7 @@ dist/
 bower_components/
 package-lock.json
 .tmp/
+logs/
 
 ####################
 # DEPLOYMENT FILES #

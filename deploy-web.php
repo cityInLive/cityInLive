@@ -2,45 +2,61 @@
 	require('deploy-tokens.php');
 	require('deploy-commands.php');
 
+	$LOG_FILE = dirname(__FILE__) . "/logs/" . date("Y_m_d-H_i_s") . ".log";
 
-
-	ini_set('output_buffering', 'off');
-    // Turn off PHP output compression
-    ini_set('zlib.output_compression', false);
-    // Implicitly flush the buffer(s)
-    ini_set('implicit_flush', true);
-    ob_implicit_flush(true);
-    // Clear, and turn off output buffering
-    while (ob_get_level() > 0) {
-        // Get the curent level
-        $level = ob_get_level();
-        // End the buffering
-        ob_end_clean();
-        // If the current level has not changed, abort
-        if (ob_get_level() == $level) break;
-    }
-    // Disable apache output buffering/compression
-    if (function_exists('apache_setenv')) {
-        apache_setenv('no-gzip', '1');
-        apache_setenv('dont-vary', '1');
-    }
-
-
-	echo '
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<title>GIT DEPLOYMENT SCRIPT</title>
-</head>
-<body style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">
-<pre>
+	function getHeader() {
+		return '<!DOCTYPE HTML>
+				<html lang="en-US">
+					<head>
+						<meta charset="UTF-8">
+						<title>GIT DEPLOYMENT SCRIPT</title>
+					</head>
+					<body style="background-color: #000000; 
+					             color: #FFFFFF;
+					             font-weight: bold; 
+					             padding: 0 10px;">
+						<pre>
  .  ____  .    ____________________________
  |/      \|   |                            |
 [| <span style="color: #FF0000;">&hearts;    &hearts;</span> |]  | Git Deployment Script v0.1 |
  |___==___|  /              &copy; oodavid 2012 |
               |____________________________|
-';
+		';
+	}
+
+	function getFooter() {
+		return '
+					</pre>
+				</body>
+			</html>';
+	}
+
+	if($_GET['token'] != $deploy_web_token) {
+		die(getHeader() . "<h1>WRONG TOKEN</h1>" . getFooter());
+	}
+
+	ignore_user_abort(true);
+	//ini_set('output_buffering', 'off');
+    ini_set('zlib.output_compression', false);
+    //ini_set('implicit_flush', true);
+    //ob_implicit_flush(true);
+	set_time_limit(300);
+
+	ob_start();
+
+	$response  = getHeader(); 
+	$response .= "<h1>Starting...</h1>";
+	$response .= "<p>If this is running from a Github webhook, you won't see anything more.<br/>";
+	$response .= "However, logs will be available in the file " . $LOG_FILE . ".</p>";
+
+	echo $response; // send the response
+
+	header('Connection: close');
+	header('Content-Length: '.ob_get_length());
+	ob_end_flush();
+	ob_flush();
+	flush();
+
 	/**
 	 * GIT DEPLOYMENT SCRIPT
 	 *
@@ -49,28 +65,24 @@
 	 *		https://gist.github.com/1809044
 	 */
 
-	if($_GET['token'] == $deploy_web_token) {
 		// The commands
 		$commands = $deploy_web_commands; 
 
 		// Run the commands for output
 		foreach($commands AS $command){
+			ob_start();
 			$output = '';
-			// Run it
-			// Output
-			$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+			$output .= "<span style=\"color: #6BE234;\">\$ </span><span style=\"color: #729FCF;\">{$command}\n</span>";
+			
 			echo $output;
 			system($command);
 
-			flush();
+			file_put_contents($LOG_FILE, file_get_contents($LOG_FILE) . ob_get_contents());
+			ob_end_flush();
 			ob_flush();
+			flush();
 		}
-	}
-	else {
-		echo "<h1>Invalid token</h1>";
-	}
+
+	echo getFooter();
 
 ?>
-</pre>
-</body>
-</html>
