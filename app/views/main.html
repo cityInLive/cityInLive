@@ -1,6 +1,16 @@
-<section ng-controller="mainCtrl">
+<section ng-controller='mainCtrl'>
 	<div id='searchArea'>
-		Recherche
+		<div id='searchArea-content'>
+			{{text}}
+			<div id='logo'></div>
+			<div id='searchForm'>
+				<form>
+					<input type="text" ng-model="city.name" placeholder="{{city.name}}">
+					<input type="submit" ng-click="update(city)">
+				</form>
+			</div>
+		</div>
+		<div id='map'></div>
 	</div>
 	<div id='panelArea'>
 		Panneau

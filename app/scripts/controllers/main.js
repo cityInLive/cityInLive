@@ -1,15 +1,13 @@
 'use strict';
 
-/*
-let app = angular.module('liveCityApp', []);
 
-app.controller('MainCtrl', function($scope) {
-	$scope.total = 'world';
-});
-*/
+angular.module('liveCityApp').controller('mainCtrl', ['$scope', function($scope) {
+	$scope.text = 'hello';
 
-let app = angular.module('liveCityApp');
+	//$scope.city.name = 'test';
 
-app.controller('mainCtrl', ['$scope', function($scope) {
-	$scope.total = 'hello';
+	$scope.update = function(city) {
+		$scope.text = 'Text: ' + city.name;
+	};
+
 }]);
