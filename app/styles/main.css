@@ -1,3 +1,7 @@
+html {
+	/* When scrolling too far, this will be the color, the same as the Google Maps color */
+	background-color: #CACACA;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -73,7 +77,7 @@ button.input-visit {
 	border-top: none;
 	border-radius: 0px 0px 3px 3px;
 	background: linear-gradient(#ef675c, #e6574e);
-	transition: all 0.3s ease-in;
+	transition: all 0.4s ease-in-out;
 	transform: translateY(0px);
 }
 button.input-visit:hover {
