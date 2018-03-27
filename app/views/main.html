@@ -1,18 +1,22 @@
 <section ng-controller='mainCtrl'>
 	<div id='searchArea'>
 		<div id='searchArea-content'>
-			{{text}}
 			<div id='logo'></div>
-			<div id='searchForm'>
-				<form>
-					<input type="text" ng-model="city.name" placeholder="{{city.name}}">
-					<input type="submit" ng-click="update(city)">
+			<div>
+				<form id='searchForm'>
+					<div id="search">
+						<input class='input-field' type="text" ng-model="city.name" placeholder="Ville" autofocus>
+						<button class='input-search' type="submit" ng-click="update(city)"><div class="searchBtn"></div></button>
+					</div>
+					<div id="visit">
+						<button class='input-visit sample-show-hide' ng-show="allowVisit(city)" type="submit" ng-click="visit(city)">Visiter {{city.name}}</button>
+					</div>
 				</form>
 			</div>
 		</div>
 		<div id='map'></div>
 	</div>
-	<div id='panelArea'>
+	<div id='panelArea' ng-show='havePanel()'>
 		Panneau
 	</div>
 </section>

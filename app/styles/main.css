@@ -27,8 +27,84 @@ body {
 	align-self: flex-start;
 }
 
-#searchForm {
 
+button[type="submit"],input {
+	font-family: 'Open Sans';
+	box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+	box-shadow: 1px 1px 4px #EBEBEB;
+	border-radius: 3px;
+	padding: 7px;
+}
+
+button[type="submit"],input[type="submit"]:hover{
+	cursor: pointer;
+}
+
+input.input-field {
+	border-radius: 3px 0px 0px 3px;
+	background-color: white;
+	font-size: 14pt;
+	outline: none;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+
+button.input-search {
+	background-image: url('../images/search.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 20px;
+	border-radius: 0px 3px 3px 0px;
+	position: relative;
+	float: right;
+	background-color: white;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	position: relative;
+	border-left: none;
+}
+
+button.input-visit {
+	font-size: 14pt;
+	margin-top: 0px;
+	color: white;
+	border-top: none;
+	border-radius: 0px 0px 3px 3px;
+	background: linear-gradient(#ef675c, #e6574e);
+	transition: all 0.3s ease-in;
+	transform: translateY(0px);
+}
+button.input-visit:hover {
+	background: linear-gradient(#fd7165, #e6574e);
+}
+
+button.input-visit.ng-hide {
+	transform: translateY(-20px);
+	opacity: 0;
+}
+
+
+#searchForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#search {
+	display: flex;
+	position: relative;
+	margin-bottom: 0px;
+	z-index: 2;
+	overflow: hidden;
+}
+
+#visit {
+	position: relative;
+	margin-top: 0px;
+	z-index: 1;
+	height: 40px;
 }
 
 #map {
@@ -43,4 +119,21 @@ body {
 #panelArea {
 	background-color: blue;
 	height: 100%;
+}
+
+/* Remove all Google information on the map */
+
+/*
+ * We finally keep the Google logo
+a[href^="http://maps.google.com/maps"] {
+	display: none !important
+}
+*/
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+	display: none;
+}
+
+.gmnoprint div {
+	background: none !important;
 }
