@@ -1,18 +1,15 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name liveCityApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the liveCityApp
- */
-angular.module('liveCityApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma',
-	  'Test'
-    ];
-  });
+/*
+let app = angular.module('liveCityApp', []);
+
+app.controller('MainCtrl', function($scope) {
+	$scope.total = 'world';
+});
+*/
+
+let app = angular.module('liveCityApp');
+
+app.controller('mainCtrl', ['$scope', function($scope) {
+	$scope.total = 'hello';
+}]);
