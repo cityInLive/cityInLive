@@ -21,9 +21,11 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
 
 	<div ng-view></div>
+
+	<!-- Google maps !-->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -41,7 +43,7 @@
         <script src="scripts/app.js"></script>
 		<script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/main.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+
         <!-- endbuild -->
 </body>
 </html>
