@@ -2,25 +2,43 @@
 
 
 angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.allowVisit = false;
+	$scope.allowVisit = true;
+	$scope.city = "";
 
 	$scope.change = function() {
+		console.log("on change: " + $scope.city);
+		//$scope.$apply();
 		$scope.allowVisit = false;
-		$scope.toMajs($scope.city);
+		$scope.toMajs();
 	};
 
-	$scope.toMajs = function(city) {
-		city.name = city.name.replace(/(^|\s)\S/g, function(l) {
+
+
+	$scope.setValue = function(newValue) {
+
+		console.log("on set: " + newValue);
+		$scope.$apply(function () {
+			$scope.city = newValue;
+		});
+		$scope.$digest();
+		$scope.change();
+	};
+
+	$scope.toMajs = function() {
+		console.log("on maj");
+		$scope.city = $scope.city.replace(/(^|\s)\S/g, function(l) {
 			return l.toUpperCase();
 		});
+		//city.name = city.name.replace(', France','');
 	};
 
-	$scope.search = function(city) {
-		showLocation(city.name);
+	$scope.search = function() {
+		console.log("on cherche" + $scope.city);
+		showLocation($scope.city);
 	};
 
 
-	$scope.visit = function(city) {
+	$scope.visit = function() {
 
 	};
 
@@ -34,7 +52,7 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 		createMap(1);
 		showCountry('France');
 	};
-	
+
 	google.maps.event.addDomListener(window, 'load', $scope.initialize);
 
 	function showPlace(placeName, placeType, shouldAllowVisit) {
@@ -42,6 +60,7 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 
 		geocoder.geocode({'address': placeName}, function(results, status) {
 			if(status === google.maps.GeocoderStatus.OK) {
+				console.log("resultat de la recherhce pour " + placeName + ":");
 				console.log(results);
 				let location = results[0].geometry.location;
 				let types    = results[0].address_components[0].types;
@@ -79,7 +98,52 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 				disableDefaultUI: true,
 				styles: googleMapsStyle()
 			});
+
+			var input = document.getElementById('input-city');
+
+			var options = {
+				types: ['(cities)'],
+				componentRestrictions: {country: 'fr'}
+			};
+
+			var autocomplete = new google.maps.places.Autocomplete(input, options);
+			//autocomplete.bindTo('bounds', map);
+
+
+			autocomplete.addListener('place_changed', function() {
+				var place = autocomplete.getPlace();
+				var location = place.address_components[0].short_name;
+				//console.log("Autocomplete:" + place.address_components[0].short_name);
+				console.log('on a changé de place: ' + location);
+				//$scope.city = "ksdjl^sd^sfqjg^sjgks,fmg";
+				//$scope.$apply();
+				$scope.setValue(location);
+				$scope.search();
+				$scope.allowVisit = true;
+				///$scope.$apply();
+				//$scope.search();
+
+				//$scope.city = place.address_components[0].short_name;
+				//$scope.setValue(place.address_components[0].short_name);
+				//$scope.change();
+				//$scope.search();
+				//$scope.$apply(function() {
+                    //$scope.city.$setViewValue("input.val()");
+				//	console.log($scope.ngModel);
+                //});
+				//console.log(place);
+				//console.log($scope);
+				//console.log(place.address_components[0].short_name);
+				//$scope.city = "LSDLFJSLJFSDF";//place.address_components[0].short_name;
+				//$scope.$apply();
+				//$scope.search();
+				//$scope.toMajs($scope.city);
+			});
+
+
+
 		}
+
 	}
 
 	function googleMapsStyle() {

@@ -48,6 +48,7 @@ button[type="submit"],input[type="submit"]:hover{
 }
 
 input.input-field {
+	width: 400px;
 	border-radius: 3px 0px 0px 3px;
 	background-color: white;
 	font-size: 14pt;
