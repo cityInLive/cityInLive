@@ -31,41 +31,52 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 
 
 	$scope.initialize = function() {
-		let france = {lat: 47.7510112, lng: 2.3148873};
-		createMap(france, 6);
+		createMap(1);
+		showCountry('France');
 	};
+	
 	google.maps.event.addDomListener(window, 'load', $scope.initialize);
 
-
-	function showLocation(cityName) {
+	function showPlace(placeName, placeType, shouldAllowVisit) {
 		let geocoder = new google.maps.Geocoder();
 
-		geocoder.geocode({'address': cityName}, function(results, status) {
+		geocoder.geocode({'address': placeName}, function(results, status) {
 			if(status === google.maps.GeocoderStatus.OK) {
 				console.log(results);
-				let location = results[0]["geometry"]["location"];
-				let types    = results[0]["address_components"][0]["types"];
+				let location = results[0].geometry.location;
+				let types    = results[0].address_components[0].types;
 
-				if(types.includes('locality')) {
+				if(types.includes(placeType)) {
 					let lat = location.lat();
 					let lng = location.lng();
-					$scope.pos = {lat: lat, lng: lng};
-					$scope.map.setCenter(results[0]["geometry"].location);
-					$scope.map.fitBounds(results[0]["geometry"].viewport);
 
-					$scope.allowVisit = true;
-					$scope.$apply();
+					$scope.pos = {lat: lat, lng: lng};
+
+					$scope.map.setCenter(results[0].geometry.location);
+					$scope.map.fitBounds(results[0].geometry.viewport);
+
+					if(shouldAllowVisit) {
+						$scope.allowVisit = true;
+						$scope.$apply();
+					}
 				}
 			}
 		});
 	}
 
-	function createMap(centerPos, zoomValue) {
+	function showCountry(countryName) {
+		showPlace(countryName, 'country', false);
+	}
+
+	function showLocation(cityName) {
+		showPlace(cityName, 'locality', true);
+	}
+
+	function createMap(zoomValue) {
 		if($scope.map === undefined) {
 			$scope.map = new google.maps.Map(document.getElementById('map'), {
 				zoom: zoomValue,
 				disableDefaultUI: true,
-				center: centerPos,
 				styles: googleMapsStyle()
 			});
 		}
@@ -110,7 +121,7 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 				"elementType": "labels",
 				"stylers": [
 					{
-						"visibility": "off"
+						"visibility": "on"
 					}
 				]
 			},
