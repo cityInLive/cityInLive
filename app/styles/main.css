@@ -22,11 +22,13 @@ body {
 }
 
 #logo {
-	background-color: gray;
+	background-image: url('../images/logo.png');
+	background-size: contain;
+	background-repeat: no-repeat;
 	height: 100px;
 	width:  100px;
-	left: 0;
-	top:  0;
+	left: 10px;
+	top:  10px;
 	position: absolute;
 	align-self: flex-start;
 }

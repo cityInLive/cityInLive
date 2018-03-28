@@ -5,11 +5,11 @@
 			<div>
 				<form id='searchForm'>
 					<div id="search">
-						<input class='input-field' type="text" ng-model="city.name" placeholder="Ville" autofocus>
-						<button class='input-search' type="submit" ng-click="update(city)"><div class="searchBtn"></div></button>
+						<input class='input-field' type="text" ng-model="city.name" ng-change="change()" placeholder="Ville" autofocus>
+						<button class='input-search' type="submit" ng-click="search(city)"><div class="searchBtn"></div></button>
 					</div>
 					<div id="visit">
-						<button class='input-visit sample-show-hide' ng-show="allowVisit(city)" type="submit" ng-click="visit(city)">Visiter {{city.name}}</button>
+						<button class='input-visit' ng-show="allowVisit" type="submit" ng-click="visit(city)">Visiter {{city.name}}</button>
 					</div>
 				</form>
 			</div>
