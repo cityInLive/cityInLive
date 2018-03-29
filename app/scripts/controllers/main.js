@@ -2,8 +2,8 @@
 
 
 angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
-	$scope.allowVisit = true;
-	$scope.city = "";
+	$scope.allowVisit = false;
+	$scope.city = "SALUT";
 
 	$scope.change = function() {
 		console.log("on change: " + $scope.city);
@@ -17,10 +17,10 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 	$scope.setValue = function(newValue) {
 
 		console.log("on set: " + newValue);
-		$scope.$apply(function () {
+		//$scope.$apply(function () {
 			$scope.city = newValue;
-		});
-		$scope.$digest();
+		//});
+		//$scope.$digest();
 		$scope.change();
 	};
 
@@ -112,16 +112,24 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 
 			autocomplete.addListener('place_changed', function() {
 				var place = autocomplete.getPlace();
+				console.log(place);
 				var location = place.address_components[0].short_name;
 				//console.log("Autocomplete:" + place.address_components[0].short_name);
 				console.log('on a changé de place: ' + location);
 				//$scope.city = "ksdjl^sd^sfqjg^sjgks,fmg";
 				//$scope.$apply();
-				$scope.setValue(location);
-				$scope.search();
-				$scope.allowVisit = true;
+				$scope.city = location;
+				$scope.$apply();
+				console.log($scope.city);
+/*
+				$scope.$apply(function() {
+					$scope.setValue(location);
+					$scope.search();
+					$scope.allowVisit = true;
+				});*/
+
 				///$scope.$apply();
-				//$scope.search();
+				$scope.search();
 
 				//$scope.city = place.address_components[0].short_name;
 				//$scope.setValue(place.address_components[0].short_name);
