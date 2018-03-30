@@ -50,7 +50,7 @@ angular.module('liveCityApp').controller('mainCtrl', ['$scope', '$http', functio
 
 	$scope.initialize = function() {
 		createMap(1);
-		showCountry('France');
+		showCountry('United-States');
 	};
 
 	google.maps.event.addDomListener(window, 'load', $scope.initialize);
