@@ -1,0 +1,16 @@
+/* Remove all Google information on the map */
+
+/*
+ * We finally keep the Google logo
+a[href^="http://maps.google.com/maps"] {
+	display: none !important
+}
+*/
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+	display: none;
+}
+
+.gmnoprint {
+	background: none !important;
+}

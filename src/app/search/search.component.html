@@ -1,12 +1,20 @@
-<!--<script
-	src="https://maps.googleapis.com/maps/api/js?key=&libraries=places">
-</script>-->
 <div id='searchArea'>
-	{{cityName}}
 	<div id='searchArea-content'>
 		<div id='logo'></div>
 		<div>
 			<form id='searchForm'>
+				<div id="visit">
+					<button
+						class='input-visit'
+						type="submit"
+						[style.opacity]="allowVisit ? '1' : '0'"
+						[style.visibility]="allowVisit ? 'visible' : 'hidden'"
+						[ngClass]="{'hide' : !allowVisit}"
+						(click)="onVisit()"
+						>
+							Visiter {{cityName}}
+					</button>
+				</div>
 				<div id="search">
 					<input
 						id="input-city"
@@ -24,20 +32,16 @@
 						(click)="onSearch()"
 					></button>
 				</div>
-				<div id="visit">
-					<button
-						class='input-visit'
-						type="submit"
-						[hidden]="!allowVisit"
-						(click)="onVisit()"
-						>
-							Visiter {{cityName}}
-					</button>
-				</div>
 			</form>
 		</div>
 	</div>
-	<agm-map [latitude]="latitude" [longitude]="longitude">
-		<agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+	<agm-map id="map"
+		[styles]="googleMapsStyle"
+		[scrollwheel]="false"
+		[zoomControl]="false"
+		[streetViewControl]="false"
+		[latitude]="latitude"
+		[longitude]="longitude"
+		[fitBounds]="bounds">
 	</agm-map>
 </div>
