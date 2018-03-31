@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit {
 	private showPlace(address: string, placeType: string, shouldAllowVisit: boolean) {
 		let geocoder = new google.maps.Geocoder();
 		geocoder.geocode({'address': address}, function(results, status) {
-
+			console.log("on veut afficher" + address);
 			if(status === google.maps.GeocoderStatus.OK) {
 				let location = results[0].geometry.location;
 				let types    = results[0].address_components[0].types;
