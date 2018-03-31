@@ -77,7 +77,7 @@ button.input-visit:hover {
 	background: linear-gradient(#fd7165, #e6574e);
 }
 
-button.input-visit.ng-hide {
+button.input-visit.[hidden] {
 	transform: translateY(-20px);
 	opacity: 0;
 }

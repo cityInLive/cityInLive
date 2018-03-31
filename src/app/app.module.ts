@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 
 // Google Maps
 import { AgmCoreModule } from '@agm/core';
@@ -21,7 +20,6 @@ import { PanelComponent } from './panel/panel.component';
       apiKey: 'AIzaSyCjd71SfnccCzf95_eYf9eTzOOvr2d2Xyg',
 	  libraries: ["places"]
   	}),
-	ReactiveFormsModule
   ],
   declarations: [
 	AppComponent,

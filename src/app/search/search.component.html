@@ -2,6 +2,7 @@
 	src="https://maps.googleapis.com/maps/api/js?key=&libraries=places">
 </script>-->
 <div id='searchArea'>
+	{{cityName}}
 	<div id='searchArea-content'>
 		<div id='logo'></div>
 		<div>
@@ -13,6 +14,7 @@
 						type="text"
 						name="city"
 						[(ngModel)]="cityName"
+						(input)="onUpdateCity()"
 						#search
 						autofocus
 					>
@@ -26,7 +28,7 @@
 					<button
 						class='input-visit'
 						type="submit"
-						*ngIf="allowVisit"
+						[hidden]="!allowVisit"
 						(click)="onVisit()"
 						>
 							Visiter {{cityName}}
