@@ -1,3 +1,41 @@
-<p>
-  search works!
-</p>
+<!--<script
+	src="https://maps.googleapis.com/maps/api/js?key=&libraries=places">
+</script>-->
+<div id='searchArea'>
+	<div id='searchArea-content'>
+		<div id='logo'></div>
+		<div>
+			<form id='searchForm'>
+				<div id="search">
+					<input
+						id="input-city"
+						class='input-field'
+						type="text"
+						name="city"
+						[(ngModel)]="cityName"
+						#search
+						autofocus
+					>
+					<button
+						class='input-search searchBtn'
+						type="submit"
+						(click)="onSearch()"
+					></button>
+				</div>
+				<div id="visit">
+					<button
+						class='input-visit'
+						type="submit"
+						*ngIf="allowVisit"
+						(click)="onVisit()"
+						>
+							Visiter {{cityName}}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<agm-map [latitude]="latitude" [longitude]="longitude">
+		<agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+	</agm-map>
+</div>
