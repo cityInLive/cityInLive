@@ -13,7 +13,7 @@
 
 	if($_GET['token'] == $deploy_api_token) {
 		// The commands
-		chdir('../liveCity-api');
+		chdir('../../liveCity-api');
 		$commands = $deploy_api_commands; 
 
 		// Run the commands for output
