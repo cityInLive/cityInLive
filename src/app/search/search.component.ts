@@ -1,5 +1,6 @@
-import { Component, NgZone, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AppComponent } from '../app.component';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
 
@@ -26,7 +27,8 @@ export class SearchComponent implements OnInit {
 
 	public constructor(
 		private mapsAPILoader: MapsAPILoader,
-		private zone: NgZone
+		private zone: NgZone,
+		@Inject(AppComponent) private parent: AppComponent
 		) {
 			this.latitude   = 39.8282;
 			this.longitude  = -98.5795;
@@ -79,7 +81,7 @@ export class SearchComponent implements OnInit {
 	}
 
 	public onVisit() {
-		console.log('visit' + this.cityName);
+		this.parent.getPanel().showCity(this.cityName, this.latitude, this.longitude);
 	}
 
 	public showCountry(country: string) {

@@ -4,6 +4,9 @@
 		<div>
 			<form id='searchForm'>
 				<div id="visit">
+					<!-- the first button always get the focus, so we add a dummy invisible
+					button that gets the focus, allowing to press enter and search, not visit -->
+					<input type="submit" (click)="onSearch()" class="hidden" />
 					<button
 						class='input-visit'
 						type="submit"
