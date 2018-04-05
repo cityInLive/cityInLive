@@ -1,4 +1,112 @@
 #panelArea {
+	background-color: #eeeeee;
 	width: 100vw;
 	min-height: 100vh;
+	font-family: "Open Sans";
+}
+
+#title-area {
+	width: 100vw;
+	padding-left: 10px;
+	background-color: #ffffff;
+	font-size: 20pt;
+	border-bottom: 1px solid #d5d5d5;
+	height: 40px;
+}
+
+#title-area.fixed {
+	position: fixed;
+	top: 0;
+}
+
+#module-area {
+	margin-top: 40px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-content: flex-start;
+
+	--color-twitter:   #1da1f2;
+	--color-weather:   #00cd82;
+	--color-instagram: #c930db;
+	--color-wikipedia: #818181;
+	--color-map:       #544741;
+	--color-cinema:    #e01c28;
+}
+@media (max-width: 640px) {
+	#module-area {
+		flex-direction: column;
+	}
+}
+
+.module {
+	background-color: #ffffff;
+	border: 1px solid black;
+	border-radius: 3px;
+	margin: 5px;
+
+	min-height: 100px;
+	min-width: 100px;
+}
+
+.module-title {
+	padding-left: 5px;
+	padding-right: 10px;
+	color: #ffffff;
+	font-weight: 200;
+	font-size: 14pt;
+}
+
+.module-content {
+	padding: 5px;
+}
+
+
+.twitter {
+	border-color: var(--color-twitter);
+}
+
+.twitter > .module-title {
+	background-color: var(--color-twitter);
+}
+
+.weather {
+	border-color: var(--color-weather);
+}
+
+.weather > .module-title {
+	background-color: var(--color-weather);
+}
+
+.instagram {
+	border-color: var(--color-instagram);
+}
+
+.instagram > .module-title {
+	background-color: var(--color-instagram);
+}
+
+.wikipedia {
+	flex: 1;
+	border-color: var(--color-wikipedia);
+}
+
+.wikipedia > .module-title {
+	background-color: var(--color-wikipedia);
+}
+
+.map {
+	border-color: var(--color-map);
+}
+
+.map > .module-title {
+	background-color: var(--color-map);
+}
+
+.cinema {
+	border-color: var(--color-cinema);
+}
+
+.cinema > .module-title {
+	background-color: var(--color-cinema);
 }
