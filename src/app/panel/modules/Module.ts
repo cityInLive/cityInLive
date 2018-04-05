@@ -1,9 +1,19 @@
-import { PanelComponent } form '../panel.component';
+import { PanelComponent } from '../panel.component';
 
-export class Module {
+import { Http, Response } from '@angular/http';
 
-	public abstract get(panel: PanelComponent) {
-		
+export abstract class Module {
+
+	public BASE_URL = "https://livecity.vlntn.pw:8080/";
+
+	public constructor(public http: Http) {
+
 	}
+
+	public requestFromName(apiName :string, cityName: string) {
+		return this.http.get(this.BASE_URL + apiName + '/' + cityName);
+	}
+
+	public abstract get(panel: PanelComponent);
 
 }

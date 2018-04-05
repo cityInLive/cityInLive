@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, HostListener } from '@angular/core';
 import { SimpleSmoothScrollService } from 'ng2-simple-smooth-scroll';
 import { SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
+import { Http, Response } from '@angular/http';
 
 import { Wikipedia } from './modules/Wikipedia';
 
@@ -23,8 +24,10 @@ export class PanelComponent implements OnInit {
 
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
-		private zone: NgZone
+		private zone: NgZone,
+		private http: Http
 		) {
+			this.wikipedia = new Wikipedia(http);
 	}
 
 	public ngOnInit() {
@@ -60,7 +63,7 @@ export class PanelComponent implements OnInit {
 	}
 
 	public getModulesInfos() {
-		this.wikipedia.get(this); 
+		this.wikipedia.get(this);
 	}
 
 	public scroll() {

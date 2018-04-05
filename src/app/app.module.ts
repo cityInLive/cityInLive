@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 // Google Maps
 import { AgmCoreModule } from '@agm/core';
@@ -20,6 +21,7 @@ import { PanelComponent } from './panel/panel.component';
 	CommonModule,
 	FormsModule,
 	SimpleSmoothScrollModule,
+	HttpModule,
 	AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCjd71SfnccCzf95_eYf9eTzOOvr2d2Xyg',
 	  libraries: ["places"]

@@ -46,7 +46,8 @@ export class SearchComponent implements OnInit {
 
 			autocomplete.addListener("place_changed", () => {
 				this.zone.run(() => {
-					let city = autocomplete.getPlace().formatted_address;
+					console.log(autocomplete.getPlace());
+					let city = autocomplete.getPlace().address_components[0].long_name;
 					if(city != undefined)
 						this.cityName = city;
 					this.onSearch();
@@ -81,7 +82,8 @@ export class SearchComponent implements OnInit {
 	}
 
 	public onVisit() {
-		this.parent.getPanel().showCity(this.cityName, this.latitude, this.longitude);
+		let realName = this.cityName.replace(', France', '');
+		this.parent.getPanel().showCity(realName, this.latitude, this.longitude);
 	}
 
 	public showCountry(country: string) {
