@@ -19,8 +19,11 @@
 	top: 0;
 }
 
+#module-area.fixed {
+	margin-top: 20px;
+}
+
 #module-area {
-	margin-top: 40px;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -44,7 +47,8 @@
 	border: 1px solid black;
 	border-radius: 3px;
 	margin: 5px;
-
+	flex-grow: 1;
+	width: 300px;
 	min-height: 100px;
 	min-width: 100px;
 }
@@ -87,7 +91,6 @@
 }
 
 .wikipedia {
-	flex: 1;
 	border-color: var(--color-wikipedia);
 }
 
@@ -109,4 +112,31 @@
 
 .cinema > .module-title {
 	background-color: var(--color-cinema);
+}
+
+@media (max-width: 640px) {
+	#module-area {
+		flex-direction: column;
+	}
+	.module {
+		width: auto;
+	}
+	.wikipedia {
+		order: 1;
+	}
+	.weather {
+		order: 2;
+	}
+	.map {
+		order: 3;
+	}
+	.instagram {
+		order: 4;
+	}
+	.twitter {
+		order: 5;
+	}
+	.cinema {
+		order: 6;
+	}
 }

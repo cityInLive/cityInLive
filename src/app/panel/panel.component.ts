@@ -2,6 +2,8 @@ import { Component, OnInit, NgZone, HostListener } from '@angular/core';
 import { SimpleSmoothScrollService } from 'ng2-simple-smooth-scroll';
 import { SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 
+import { Wikipedia } from './modules/Wikipedia';
+
 @Component({
 	selector: 'app-panel',
 	templateUrl: './panel.component.html',
@@ -15,6 +17,9 @@ export class PanelComponent implements OnInit {
 	public lng:       number;
 	public showPanel: boolean;
 	public fixedBar:  boolean;
+
+	//public weather:   Weather;
+	public wikipedia: Wikipedia;
 
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
@@ -50,7 +55,12 @@ export class PanelComponent implements OnInit {
 		this.lat       = lat;
 		this.lng       = lng;
 		this.showPanel = true;
+		this.getModulesInfos();
 		this.scroll();
+	}
+
+	public getModulesInfos() {
+		this.wikipedia.get(this); 
 	}
 
 	public scroll() {

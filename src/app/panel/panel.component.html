@@ -3,11 +3,11 @@
 	<div id="title-area" [ngClass]="{'fixed': fixedBar}">
 		{{cityName}}
 	</div>
-	<div id="module-area">
+	<div id="module-area" [ngClass]="{'fixed': fixedBar}">
 		<div class="module weather">
 			<div class="module-title">Méteo</div>
 			<div class="module-content">
-
+				{{weather}}
 			</div>
 		</div>
 		<div class="module instagram">
