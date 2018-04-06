@@ -4,7 +4,7 @@ import { PanelComponent } from '../panel.component';
 
 export class Wikipedia extends Module {
 
-	public MODULE_NAME = 'wiki';
+	public MODULE_NAME = 'wikipedia';
 
 	public imageURL:     string;
 	public imageDesc:    string;

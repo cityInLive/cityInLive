@@ -7,7 +7,26 @@
 		<div class="module weather">
 			<div class="module-title">Méteo</div>
 			<div class="module-content">
-				{{weather}}
+				<div class="weather-content">
+					<div class="weather-actual">
+						<div class="weather-image">
+							<img src='{{weather.actual?.image}}' alt='{{weather.actual?.desc}}'/>
+						</div>
+						<div>
+							{{weather.actual?.temp}} °C
+							<div class="weather-temp">{{weather.actual?.desc}}</div>
+						</div>
+					</div>
+					<div class="weather-forecasts">
+						<div class="weather-forecast" *ngFor="let forecast of weather.forecasts">
+							<div class="weather-day">{{forecast?.date}}</div>
+							<div class="weather-image">
+								<img src='{{forecast?.image}}' alt='Prévision pour {{forecast?.date}}'/>
+							</div>
+							<div class="weather-temp">{{forecast?.temp}}</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="module instagram">

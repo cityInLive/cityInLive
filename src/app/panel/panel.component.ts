@@ -4,6 +4,7 @@ import { SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 import { Http, Response } from '@angular/http';
 
 import { Wikipedia } from './modules/Wikipedia';
+import { Weather } from './modules/Weather';
 
 @Component({
 	selector: 'app-panel',
@@ -19,7 +20,7 @@ export class PanelComponent implements OnInit {
 	public showPanel: boolean;
 	public fixedBar:  boolean;
 
-	//public weather:   Weather;
+	public weather:   Weather;
 	public wikipedia: Wikipedia;
 
 	public constructor(
@@ -28,6 +29,8 @@ export class PanelComponent implements OnInit {
 		private http: Http
 		) {
 			this.wikipedia = new Wikipedia(http);
+			this.weather   = new Weather(http);
+
 	}
 
 	public ngOnInit() {
@@ -64,6 +67,7 @@ export class PanelComponent implements OnInit {
 
 	public getModulesInfos() {
 		this.wikipedia.get(this);
+		this.weather.get(this);
 	}
 
 	public scroll() {
