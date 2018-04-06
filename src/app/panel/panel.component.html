@@ -43,7 +43,21 @@
 		<div class="module wikipedia">
 			<div class="module-title">Informations</div>
 			<div class="module-content">
-				{{wikipedia.description}}
+				<div class="wikipedia-image">
+					<img src="{{wikipedia.imageURL}}" alt="Wikipedia image for {{cityName}}"/>
+					{{wikipedia.imageDesc}}
+				</div>
+				<div class="wikipedia-description">
+					{{wikipedia.description}}
+				</div>
+				<div class="wikipedia-infos">
+					<ul>
+						<li *ngFor="let value of wikipedia.informations">
+							<div class="wikipedia-infos-name">{{value.name}} :</div>
+							<div class="wikipedia-infos-content">> {{value.content}}</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div class="module map">

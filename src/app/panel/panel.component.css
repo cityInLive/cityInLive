@@ -43,31 +43,6 @@
 	--color-cinema:    #e01c28;
 }
 
-#module-area > div:nth-child(1) {
-  grid-row-end: span 1;
-}
-
-#module-area > div:nth-child(2) {
-  grid-row-end: span 2;
-}
-
-#module-area > div:nth-child(3) {
-  grid-row-end: span 3;
-}
-
-#module-area > div:nth-child(4) {
-  grid-row-end: span 3;
-}
-
-#module-area > div:nth-child(5) {
-  grid-row-end: span 1;
-}
-
-#module-area > div:nth-child(6) {
-	grid-row-end: span 1;
-	grid-column-end: span 2;
-}
-
 @media (max-width: 640px) {
 	#module-area {
 		display: flex;
@@ -173,13 +148,36 @@
 		order: 6;
 	}
 }
+@media (min-width: 640px) {
+	.weather {
+	  grid-row-end: span 1;
+	}
 
-img {
-	width: 100%;
-    height: auto;
-    max-width: 100%;
+	.instagram {
+	  grid-row-end: span 2;
+	}
+
+	.twitter {
+	  grid-row-end: span 3;
+	}
+
+	.wikipedia {
+	  grid-row-end: span 3;
+	}
+
+	.map {
+	  grid-row-end: span 1;
+	}
+
+	.cinema {
+		grid-row-end: span 1;
+		grid-column-end: span 2;
+	}
 }
 
+/**
+ * Weather
+ */
 
 .weather-content {
 	justify-content: center;
@@ -220,4 +218,31 @@ img {
 
 .weather-forecast > .weather-image {
 	max-width: 60px;
+}
+
+
+/**
+ * Wikipedia
+ */
+
+.wikipedia-image {
+	font-style: italic;
+	font-size: 10pt;
+}
+
+.wikipedia-infos ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.wikipedia-infos-content {
+	padding-left: 15px;
+}
+
+.wikipedia-infos-name {
+	font-weight: bold;
+}
+
+.wikipedia-infos-name:first-letter{
+	text-transform: capitalize
 }
