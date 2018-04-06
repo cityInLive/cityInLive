@@ -41,7 +41,6 @@ export class Wikipedia extends Module {
 		this.addInfo(res, "département", value);
 		this.addInfo(res, "maire", value);
 		this.addInfo(res, "cp", value, "Code postal");
-		this.addInfo(res, "maire", value);
 		this.addInfo(res, "population", value);
 		this.addInfo(res, "population agglomération", value);
 		this.addInfo(res, "superficie", value);
