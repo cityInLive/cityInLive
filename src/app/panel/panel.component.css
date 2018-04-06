@@ -89,9 +89,10 @@
 .module-title {
 	padding-left: 5px;
 	padding-right: 10px;
+	padding-bottom: 5px;
 	color: #ffffff;
 	font-weight: 200;
-	font-size: 14pt;
+	font-size: 16pt;
 }
 
 .module-content {
@@ -189,10 +190,21 @@ img {
 
 .weather-actual {
 	display: flex;
+	text-align: left;
+	font-size: 12pt;
+	align-items: center;
+}
+
+.weather-image {
+	padding: 5px;
 }
 
 .weather-actual > .weather-image {
 	max-width: 100px;
+}
+
+.weather-actual .weather-temp {
+	font-weight: bold;
 }
 
 .weather-forecasts {
@@ -201,6 +213,9 @@ img {
 
 .weather-forecast {
 	margin: 5px;
+	color: #bdbdbd;
+	text-align: center;
+	font-size: 11pt;
 }
 
 .weather-forecast > .weather-image {

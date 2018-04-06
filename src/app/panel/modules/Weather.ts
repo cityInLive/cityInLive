@@ -42,7 +42,7 @@ export class Weather extends Module {
 			let value = data.json();
 			console.log(value);
 			if(!value.hasOwnProperty('Error')) {
-				this.actual = new ActualData('01d', 'Ciel dégagé', 16.49);
+				this.actual = new ActualData('01d', 'Ciel dégagé', 16);
 
 				this.forecasts = [];
 				this.forecasts.push(new Forecast('01d', 'Samedi',   17));

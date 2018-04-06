@@ -13,8 +13,8 @@
 							<img src='{{weather.actual?.image}}' alt='{{weather.actual?.desc}}'/>
 						</div>
 						<div>
-							{{weather.actual?.temp}} °C
-							<div class="weather-temp">{{weather.actual?.desc}}</div>
+							<div class="weather-temp">{{weather.actual?.temp}}°C</div>
+							<div class="weather-desc">{{weather.actual?.desc}}</div>
 						</div>
 					</div>
 					<div class="weather-forecasts">
@@ -23,7 +23,7 @@
 							<div class="weather-image">
 								<img src='{{forecast?.image}}' alt='Prévision pour {{forecast?.date}}'/>
 							</div>
-							<div class="weather-temp">{{forecast?.temp}}</div>
+							<div class="weather-temp">{{forecast?.temp}}°C</div>
 						</div>
 					</div>
 				</div>
