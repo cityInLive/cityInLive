@@ -37,7 +37,7 @@ export class Weather extends Module {
 	public forecasts: Forecast[];
 
 
-	public get(panel: PanelComponent) {
+	public async get(panel: PanelComponent) {
 		let o = this;
 		this.requestFromName(this.MODULE_NAME, panel.cityName + "," + panel.cityRegion, function(data: any) {
 			o.actual = new ActualData(data.actual.logo, data.actual.text, data.actual.temp);

@@ -21,7 +21,7 @@ export class Wikipedia extends Module {
 	public description:  string;
 	public informations: CityInfo[];
 
-	public get(panel: PanelComponent) {
+	public async get(panel: PanelComponent) {
 		let o = this;
 		this.requestFromName(this.MODULE_NAME, panel.cityName + "," + panel.cityRegion, function(data: any) {
 			o.imageURL     = data.image.url;

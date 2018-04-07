@@ -51,10 +51,9 @@
 	border: 1px solid black;
 	border-radius: 3px;
 	margin: 5px;
-	flex-grow: 1;
 	min-height: 100px;
 	min-width: 100px;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .module-title {
@@ -146,23 +145,24 @@
 }
 @media (min-width: 640px) {
 	.weather {
-	  grid-row-end: span 1;
+		grid-row-end: span 1;
 	}
 
 	.instagram {
-	  grid-row-end: span 2;
+		grid-row-end: span 2;
 	}
 
 	.twitter {
-	  grid-row-end: span 3;
+		grid-row-end: span 3;
+		max-height: 800px;
 	}
 
 	.wikipedia {
-	  grid-row-end: span 3;
+		grid-row-end: span 3;
 	}
 
 	.map {
-	  grid-row-end: span 1;
+		grid-row-end: span 1;
 	}
 
 	.cinema {
@@ -247,7 +247,10 @@
 /**
  * Twitter
  */
-
+.tweets {
+	max-height: 100%;
+	overflow: scroll;
+}
 .tweet {
 	font-size: 11pt;
 }

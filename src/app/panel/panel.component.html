@@ -1,6 +1,6 @@
 <div id="SimpleSmoothScroll"></div>
 <div id='panelArea' class="panelArea" *ngIf="showPanel">
-	<div id="title-area" [ngClass]="{'fixed': fixedBar}">
+	<div id="title-area" [ngClass]="{'fixed': fixedBar}" (click)='returnSearch()'>
 		{{cityName}}
 	</div>
 	<div id="module-area" [ngClass]="{'fixed': fixedBar}">

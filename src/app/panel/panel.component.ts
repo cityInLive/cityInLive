@@ -1,6 +1,5 @@
 import { Component, OnInit, NgZone, HostListener } from '@angular/core';
-import { SimpleSmoothScrollService } from 'ng2-simple-smooth-scroll';
-import { SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
+import { SimpleSmoothScrollService, SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 import { Http, Response } from '@angular/http';
 
 import { Wikipedia } from './modules/Wikipedia';
@@ -45,14 +44,16 @@ export class PanelComponent implements OnInit {
 
 	@HostListener('window:scroll', [])
 	public onWindowScroll() {
-		let panelAreaPos = document.getElementById('module-area').getBoundingClientRect();
-		if(panelAreaPos.top < 40) {
-			if(!this.fixedBar)
-				this.fixedBar = true;
-		}
-		else {
-			if(this.fixedBar)
-				this.fixedBar = false;
+		if(this.showPanel) {
+			let panelAreaPos = document.getElementById('module-area').getBoundingClientRect();
+			if(panelAreaPos.top < 40) {
+				if(!this.fixedBar)
+					this.fixedBar = true;
+			}
+			else {
+				if(this.fixedBar)
+					this.fixedBar = false;
+			}
 		}
 	}
 
@@ -70,17 +71,16 @@ export class PanelComponent implements OnInit {
 		this.scroll();
 	}
 
+	public returnSearch() {
+		//this.showPanel = false;
+		this.smooth.smoothScrollToTop();
+	}
+
 	public getModulesInfos() {
-		let o = this;
-		setTimeout(function afterTwoSeconds() {
-			o.wikipedia.get(o);
-		}, 2);
-		setTimeout(function afterTwoSeconds() {
-			o.weather.get(o);
-		}, 2);
-		setTimeout(function afterTwoSeconds() {
-			o.twitter.get(o);
-		}, 2);
+
+		this.twitter.get(this);
+		this.wikipedia.get(this);
+		this.weather.get(this);
 		//this.weather.get(this);
 		//this.twitter.get(this);
 	}

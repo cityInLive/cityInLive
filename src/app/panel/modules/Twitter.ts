@@ -25,24 +25,12 @@ export class Tweet {
 
 		public tweets: Tweet[];
 
-		public get(panel: PanelComponent) {
+		public async get(panel: PanelComponent) {
 			let o = this;
 			this.requestFromPos(this.MODULE_NAME, panel.lat, panel.lng, function(data: any) {
 				o.tweets = [];
 
-				/**
-				o.tweets.push(new Tweet(
-					"djflo972",
-					"dj flo",
-					"https://pbs.twimg.com/profile_images/1780416530/n750925874_1689554_6982646_normal.jpg",
-					"🌹PHENOMENAL #hashtag KOMPAAAA DJ FLO let’s go @valentinp72 !!!🌹 https://t.co/MNDY5smgev",
-					"0", "0", "18 Janv.",
-					"https://twitter.com/valentinp72",
-					"https://google.com/"));*/
-
-
-
-				for(let tweet of data.tweets.slice(0, 6)) {
+				for(let tweet of data.tweets) {
 					o.tweets.push(new Tweet(
 						tweet.name,
 						tweet.tweetname,
@@ -50,12 +38,10 @@ export class Tweet {
 						tweet.text,
 						tweet.like,
 						tweet.retweet,
-						tweet.date + ' ' + tweet.time,
+						tweet.date + ' ' + tweet.time.replace(/:\d\d$/, ''),
 						tweet.url_user,
 						tweet.url_tweet));
-					console.log(tweet);
 				}
-				//console.log(data);
 			});
 		}
 
