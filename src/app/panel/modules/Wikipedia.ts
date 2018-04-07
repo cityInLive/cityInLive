@@ -1,5 +1,10 @@
 import { Module } from './Module';
+import { Observable } from 'rxjs';
 import { PanelComponent } from '../panel.component';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 export class CityInfo {
 	public name:    string;
@@ -22,15 +27,12 @@ export class Wikipedia extends Module {
 	public informations: CityInfo[];
 
 	public get(panel: PanelComponent) {
-		this.requestFromName(this.MODULE_NAME, panel.cityName).subscribe(data => {
-			let value = data.json();
-			console.log(value);
-			if(!value.hasOwnProperty('Error')) {
-				this.imageURL  = value.image.url;
-				this.imageDesc = value.image.desc;
-				this.description = value.desc;
-				this.informations = this.ordered(value.info);
-			}
+		let o = this;
+		this.requestFromName(this.MODULE_NAME, panel.cityName + "," + panel.cityRegion, function(data: any) {
+			o.imageURL     = data.image.url;
+			o.imageDesc    = data.image.desc;
+			o.description  = data.desc;
+			o.informations = o.ordered(data.info);
 		});
 	}
 
@@ -53,5 +55,6 @@ export class Wikipedia extends Module {
 			res.push(new CityInfo(newName, values[name]));
 		}
 	}
+
 
 }

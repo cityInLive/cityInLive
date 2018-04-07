@@ -14,11 +14,12 @@ import { Weather } from './modules/Weather';
 
 export class PanelComponent implements OnInit {
 
-	public cityName:  string;
-	public lat:       number;
-	public lng:       number;
-	public showPanel: boolean;
-	public fixedBar:  boolean;
+	public cityName:   string;
+	public cityRegion: string;
+	public lat:        number;
+	public lng:        number;
+	public showPanel:  boolean;
+	public fixedBar:   boolean;
 
 	public weather:   Weather;
 	public wikipedia: Wikipedia;
@@ -53,14 +54,15 @@ export class PanelComponent implements OnInit {
 	}
 
 	public debug() {
-		this.showCity("Paris", 48.86666, 2.333333);
+		this.showCity("Paris", 48.86666, 2.333333, "Île-De-France");
 	}
 
-	public showCity(cityName: string, lat: number, lng: number) {
-		this.cityName  = cityName;
-		this.lat       = lat;
-		this.lng       = lng;
-		this.showPanel = true;
+	public showCity(cityName: string, lat: number, lng: number, cityRegion: string) {
+		this.cityName   = cityName;
+		this.lat        = lat;
+		this.lng        = lng;
+		this.showPanel  = true;
+		this.cityRegion = cityRegion;
 		this.getModulesInfos();
 		this.scroll();
 	}

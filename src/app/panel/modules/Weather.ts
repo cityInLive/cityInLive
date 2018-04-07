@@ -38,18 +38,14 @@ export class Weather extends Module {
 
 
 	public get(panel: PanelComponent) {
-		this.requestFromName(this.MODULE_NAME, panel.cityName).subscribe(data => {
-			let value = data.json();
-			console.log(value);
-			if(!value.hasOwnProperty('Error')) {
-				this.actual = new ActualData('01d', 'Ciel dégagé', 16);
-
-				this.forecasts = [];
-				this.forecasts.push(new Forecast('01d', 'Samedi',   17));
-				this.forecasts.push(new Forecast('02d', 'Dimanche', 18));
-				this.forecasts.push(new Forecast('03d', 'Lundi',    19));
-
+		let o = this;
+		this.requestFromName(this.MODULE_NAME, panel.cityName + "," + panel.cityRegion, function(data: any) {
+			o.actual = new ActualData(data.actual.logo, data.actual.text, data.actual.temp);
+			o.forecasts = []
+			for(let forecast of data.forecast) {
+				o.forecasts.push(new Forecast(forecast.logo, forecast.day, forecast.temp));
 			}
+
 		});
 	}
 

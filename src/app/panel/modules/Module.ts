@@ -1,6 +1,10 @@
 import { PanelComponent } from '../panel.component';
-
+import { Observable } from 'rxjs';
 import { Http, Response } from '@angular/http';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
 
 export abstract class Module {
 
@@ -10,8 +14,21 @@ export abstract class Module {
 
 	}
 
-	public requestFromName(apiName :string, cityName: string) {
-		return this.http.get(this.BASE_URL + apiName + '/' + cityName);
+	public requestURL(url: string, execute: any) {
+		return this.http
+			.get(url)
+			.subscribe(
+				data  => execute(data.json()),
+				error => this.showError(error)
+		);
+	}
+
+	public requestFromName(apiName :string, cityName: string, execute: any) {
+		return this.requestURL(this.BASE_URL + apiName + '/' + cityName, execute);
+	}
+
+	public showError(error: string) {
+		console.log("A server error has occured", error);
 	}
 
 	public abstract get(panel: PanelComponent);

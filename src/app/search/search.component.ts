@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
 	public longitude:  number;
 	public zoom:       number;
 	public cityName:   string;
+	public cityRegion: string;
 	public oldCity:    string;
 	public allowVisit: boolean;
 	public bounds:     any;
@@ -46,10 +47,12 @@ export class SearchComponent implements OnInit {
 
 			autocomplete.addListener("place_changed", () => {
 				this.zone.run(() => {
-					console.log(autocomplete.getPlace());
+					//console.log(autocomplete.getPlace());
 					let city = autocomplete.getPlace().address_components[0].long_name;
-					if(city != undefined)
-						this.cityName = city;
+					if(city != undefined) {
+						this.cityName   = city;
+						this.cityRegion = autocomplete.getPlace().address_components[1].long_name;;
+					}
 					this.onSearch();
 				});
 			});
@@ -83,7 +86,7 @@ export class SearchComponent implements OnInit {
 
 	public onVisit() {
 		let realName = this.cityName.replace(', France', '');
-		this.parent.getPanel().showCity(realName, this.latitude, this.longitude);
+		this.parent.getPanel().showCity(realName, this.latitude, this.longitude, this.cityRegion);
 	}
 
 	public showCountry(country: string) {
