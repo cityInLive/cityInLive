@@ -25,10 +25,6 @@
 }
 
 #module-area {
-	/*display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	align-content: flex-start;*/
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	grid-auto-rows: minmax(300px, auto);
@@ -245,4 +241,69 @@
 
 .wikipedia-infos-name:first-letter{
 	text-transform: capitalize
+}
+
+
+/**
+ * Twitter
+ */
+
+.tweet {
+	font-size: 11pt;
+}
+
+.tweet-header {
+	display: flex;
+	align-items: center;
+}
+
+.tweet-header-pic {
+	margin-top: 5px;
+	width: 55px;
+}
+
+.tweet-header-pic img {
+	border-radius: 50%;
+}
+
+.tweet-header-info {
+	padding-left: 5px;
+	display: flex;
+	flex-direction: column;
+}
+
+.tweet-header-info-name {
+	font-weight: bold;
+}
+
+.tweet-header-info-more {
+	color: gray;
+}
+
+.tweet-content {
+	margin-left: 60px;
+	text-decoration:none !important;
+}
+
+.tweet-sharing {
+	display: flex;
+	margin-left: 80px;
+}
+
+.tweet-retweets, .tweet-likes {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	padding-left: 25px;
+	background-position: 0px 3px;
+	color: #758491;
+}
+
+.tweet-retweets {
+	background-image: url('../../assets/images/twitter/retweet.png');
+
+}
+
+.tweet-likes {
+	background-image: url('../../assets/images/twitter/like.png');
 }

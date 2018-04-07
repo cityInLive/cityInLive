@@ -14,6 +14,15 @@ img {
 	max-width: 100%;
 }
 
+a {
+	text-decoration:none !important;
+	color: #abb8c2;
+}
+
+a:hover {
+	color: gray;
+}
+
 /*
  * https://google-webfonts-helper.herokuapp.com/fonts/
  *

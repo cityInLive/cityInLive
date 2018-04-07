@@ -37,7 +37,30 @@
 		<div class="module twitter">
 			<div class="module-title">Twitter</div>
 			<div class="module-content">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius finibus velit, non eleifend enim venenatis quis. In vitae elementum enim, quis aliquam nisi. Donec et iaculis metus, non pulvinar elit. Aenean nisl sem, finibus ac lobortis at, dapibus tempor nisi. Donec quis eros purus. Integer vel lectus pellentesque, dictum ex nec, tristique tortor. Nunc eget ligula vel est congue dictum vestibulum non augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur et sapien sapien. Etiam malesuada elit vel nisl faucibus ullamcorper. Donec vitae elit in ante gravida tristique. Aliquam lobortis arcu sit amet tellus consectetur volutpat. Praesent elementum mauris eu lorem tincidunt, at mattis leo consectetur. Morbi sed convallis dui.
+				<div class="tweets">
+					<div class="tweet" *ngFor="let tweet of twitter.tweets">
+						<div class="tweet-header">
+							<div class="tweet-header-pic">
+								<a href="{{tweet.userURL}}" target="_blank">
+									<img src="{{tweet.picture}}" alt='Photo de profil de {{tweet.name}}'>
+								</a>
+							</div>
+							<div class="tweet-header-info">
+								<div class="tweet-header-info-name">{{tweet.tweetName}}</div>
+								<div class="tweet-header-info-more">
+									<span [innerHTML]="tweet.name"></span>
+									 ·
+									<span [innerHTML]="tweet.date"></span>
+								</div>
+							</div>
+						</div>
+						<div class="tweet-content" [innerHTML]="tweet.text | linky:{stripPrefix: false,mention:'twitter',hashtag:'twitter'}"></div>
+						<div class="tweet-sharing">
+							<div class="tweet-retweets">{{tweet.retweets}}</div>
+							<div class="tweet-likes">{{tweet.likes}}</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="module wikipedia">

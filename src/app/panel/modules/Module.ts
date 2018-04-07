@@ -27,6 +27,10 @@ export abstract class Module {
 		return this.requestURL(this.BASE_URL + apiName + '/' + cityName, execute);
 	}
 
+	public requestFromPos(apiName :string, lat: number, lng: number, execute: any) {
+		return this.requestURL(this.BASE_URL + apiName + '/' + lat + ',' + lng, execute);
+	}
+
 	public showError(error: string) {
 		console.log("A server error has occured", error);
 	}

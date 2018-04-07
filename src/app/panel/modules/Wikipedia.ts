@@ -1,10 +1,5 @@
 import { Module } from './Module';
-import { Observable } from 'rxjs';
 import { PanelComponent } from '../panel.component';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
 
 export class CityInfo {
 	public name:    string;

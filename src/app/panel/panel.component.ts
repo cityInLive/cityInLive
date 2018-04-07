@@ -5,6 +5,8 @@ import { Http, Response } from '@angular/http';
 
 import { Wikipedia } from './modules/Wikipedia';
 import { Weather } from './modules/Weather';
+import { Twitter } from './modules/Twitter';
+
 
 @Component({
 	selector: 'app-panel',
@@ -23,6 +25,7 @@ export class PanelComponent implements OnInit {
 
 	public weather:   Weather;
 	public wikipedia: Wikipedia;
+	public twitter:   Twitter;
 
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
@@ -31,7 +34,7 @@ export class PanelComponent implements OnInit {
 		) {
 			this.wikipedia = new Wikipedia(http);
 			this.weather   = new Weather(http);
-
+			this.twitter   = new Twitter(http);
 	}
 
 	public ngOnInit() {
@@ -68,8 +71,18 @@ export class PanelComponent implements OnInit {
 	}
 
 	public getModulesInfos() {
-		this.wikipedia.get(this);
-		this.weather.get(this);
+		let o = this;
+		setTimeout(function afterTwoSeconds() {
+			o.wikipedia.get(o);
+		}, 2);
+		setTimeout(function afterTwoSeconds() {
+			o.weather.get(o);
+		}, 2);
+		setTimeout(function afterTwoSeconds() {
+			o.twitter.get(o);
+		}, 2);
+		//this.weather.get(this);
+		//this.twitter.get(this);
 	}
 
 	public scroll() {
