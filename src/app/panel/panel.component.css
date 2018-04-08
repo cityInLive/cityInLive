@@ -210,11 +210,11 @@
  * Weather
  */
 .weather {
+
 }
 .weather > .module-content {
 	height: 100%;
 	overflow: hidden;
-
 }
 .weather-content {
 	margin-bottom: 20px;
@@ -301,51 +301,40 @@
 	   rgba(29, 161, 242,  0.2)
 	);
 }
-
-
 .tweet {
 	overflow-wrap: break-word;
 	font-size: 11pt;
 }
-
 .tweet-header {
 	display: flex;
 	align-items: center;
 }
-
 .tweet-header-pic {
 	margin-top: 5px;
 	width: 55px;
 }
-
 .tweet-header-pic img {
 	border-radius: 50%;
 }
-
 .tweet-header-info {
 	padding-left: 5px;
 	display: flex;
 	flex-direction: column;
 }
-
 .tweet-header-info-name {
 	font-weight: bold;
 }
-
 .tweet-header-info-more {
 	color: gray;
 }
-
 .tweet-content {
 	margin-left: 60px;
 	text-decoration:none !important;
 }
-
 .tweet-sharing {
 	display: flex;
 	margin-left: 80px;
 }
-
 .tweet-retweets, .tweet-likes {
 	width: 100%;
 	height: 100%;
@@ -354,12 +343,9 @@
 	background-position: 0px 3px;
 	color: #758491;
 }
-
 .tweet-retweets {
 	background-image: url('../../assets/images/twitter/retweet.png');
-
 }
-
 .tweet-likes {
 	background-image: url('../../assets/images/twitter/like.png');
 }
@@ -380,10 +366,29 @@
 	height: calc(100% - 33px); /* rhaaa ....... */
 	overflow: hidden;
 }
-
 .module-map {
 	background-color: gray;
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
+}
+
+
+/**
+ * Instagram
+ */
+.instagram {
+	height: 400px;
+ 	overflow: scroll;
+}
+.instagram > .module-content {
+	margin: 0;
+	padding: 0;
+}
+.pictures {
+	height: 100%;
+}
+.picture {
+	margin: 0;
+	padding: 0;
 }

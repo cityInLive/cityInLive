@@ -4,7 +4,7 @@
 		{{cityName}}
 	</div>
 	<div id="module-area">
-		<div class="module weather">
+		<div class="module weather" #weatherM>
 			<div class="module-title">Méteo</div>
 			<div class="module-content">
 				<div class="weather-content">
@@ -29,9 +29,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="module instagram">
+		<div class="module instagram" [style.height.px]="instagramH">
 			<div class="module-title">Instagram</div>
 			<div class="module-content">
+				<div class="pictures">
+					<div class="picture" *ngFor="let picture of instagram.pictures">
+						<a href="{{picture.link}}" target="_blank">
+							<img src="{{picture.imageURL}}" alt='Photo Instagram de {{cityName}}'>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="module twitter" [style.height.px]="wikipediaH">
@@ -83,7 +90,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="module map">
+		<div class="module map" #mapM>
 			<div class="module-title">Carte</div>
 			<div class="module-content">
 				<agm-map class="module-map"
@@ -94,7 +101,7 @@
 				</agm-map>
 			</div>
 		</div>
-		<div class="module cinema">
+		<div class="module cinema" #cinemaM>
 			<div class="module-title">Cinéma</div>
 			<div class="module-content">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius finibus velit, non eleifend enim venenatis quis. In vitae elementum enim, quis aliquam nisi. Donec et iaculis metus, non pulvinar elit. Aenean nisl sem, finibus ac lobortis at, dapibus tempor nisi. Donec quis eros purus. Integer vel lectus pellentesque, dictum ex nec, tristique tortor.

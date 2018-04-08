@@ -7,6 +7,7 @@ import { ElementRef, ViewChild } from '@angular/core';
 import { Wikipedia } from './modules/Wikipedia';
 import { Weather } from './modules/Weather';
 import { Twitter } from './modules/Twitter';
+import { Instagram } from './modules/Instagram';
 
 
 @Component({
@@ -27,10 +28,17 @@ export class PanelComponent implements OnInit {
 	public weather:   Weather;
 	public wikipedia: Wikipedia;
 	public twitter:   Twitter;
+	public instagram: Instagram;
 
 	public wikipediaH: number;
+	public instagramH: number;
 	public mapH :number;
 	public mapW :number;
+
+	@ViewChild('cinemaM') cinemaM:   ElementRef;
+	@ViewChild('mapM') mapM:         ElementRef;
+	@ViewChild('weatherM') weatherM: ElementRef;
+
 
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
@@ -41,12 +49,15 @@ export class PanelComponent implements OnInit {
 			this.wikipedia  = new Wikipedia(http);
 			this.weather    = new Weather(http);
 			this.twitter    = new Twitter(http);
+			this.instagram  = new Instagram(http);
 			this.wikipediaH = 0;
+			this.instagramH = 0;
 	}
 
 	@HostListener('resize', ['$event'])
 	public onResize(event) {
 		this.wikipediaH = event.detail.height;
+		this.instagramH = this.weatherM.nativeElement.offsetHeight + this.mapM.nativeElement.offsetHeight + 8;
 	}
 
 	public ngOnInit() {
@@ -77,6 +88,7 @@ export class PanelComponent implements OnInit {
 		this.twitter.get(this);
 		this.wikipedia.get(this);
 		this.weather.get(this);
+		this.instagram.get(this);
 	}
 
 	public scroll() {
