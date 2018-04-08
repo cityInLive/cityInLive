@@ -4,6 +4,18 @@
 		{{cityName}}
 	</div>
 	<div id="module-area">
+		<div class="module instagram" [style.height.px]="instagramH">
+			<div class="module-title">Instagram</div>
+			<div class="module-content">
+				<div class="pictures">
+					<div class="picture" *ngFor="let picture of instagram.pictures">
+						<a href="{{picture.link}}" target="_blank">
+							<img src="{{picture.imageURL}}" alt='Photo Instagram de {{cityName}}'>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="module weather" #weatherM>
 			<div class="module-title">Méteo</div>
 			<div class="module-content">
@@ -25,18 +37,6 @@
 							</div>
 							<div class="weather-temp">{{forecast?.temp}}°C</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="module instagram" [style.height.px]="instagramH">
-			<div class="module-title">Instagram</div>
-			<div class="module-content">
-				<div class="pictures">
-					<div class="picture" *ngFor="let picture of instagram.pictures">
-						<a href="{{picture.link}}" target="_blank">
-							<img src="{{picture.imageURL}}" alt='Photo Instagram de {{cityName}}'>
-						</a>
 					</div>
 				</div>
 			</div>
