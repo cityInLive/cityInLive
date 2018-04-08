@@ -86,7 +86,7 @@ export class SearchComponent implements OnInit {
 
 	public onVisit() {
 		let realName = this.cityName.replace(', France', '');
-		this.parent.getPanel().showCity(realName, this.latitude, this.longitude, this.cityRegion);
+		this.parent.getPanel().showCity(realName, this.latitude, this.longitude, this.cityRegion, this.bounds);
 	}
 
 	public showCountry(country: string) {

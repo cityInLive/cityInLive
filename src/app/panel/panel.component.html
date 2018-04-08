@@ -88,7 +88,9 @@
 			<div class="module-content">
 				<agm-map class="module-map"
 						[latitude]="lat"
-						[longitude]="lng">
+						[longitude]="lng"
+						[fitBounds]="bounds">
+						<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 				</agm-map>
 			</div>
 		</div>

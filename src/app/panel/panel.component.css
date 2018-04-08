@@ -185,6 +185,27 @@
 	}
 }
 
+@media (min-width: 1500px) {
+	.wikipedia {
+		order: 1;
+	}
+	.twitter {
+		order: 2;
+	}
+	.instagram {
+		order: 3;
+	}
+	.map {
+		order: 6;
+	}
+	.cinema {
+		order: 5;
+	}
+	.weather {
+		order: 4;
+	}
+}
+
 /**
  * Weather
  */
@@ -197,7 +218,6 @@
 }
 .weather-content {
 	margin-bottom: 20px;
-
 	justify-content: center;
 	display: flex;
 	flex-wrap: wrap;
@@ -206,6 +226,7 @@
 }
 
 .weather-actual {
+	align-items: center;
 	display: flex;
 	text-align: left;
 	font-size: 12pt;
@@ -272,7 +293,16 @@
 .tweets {
 	height: 100%;
 	overflow: scroll;
+	margin-bottom: 100px;
 }
+.twitter {
+	content: "";
+	background: linear-gradient(to bottom,
+	   rgba(255, 255, 255, 0) 95%,
+	   rgba(29, 161, 242,  0.2)
+	);
+}
+
 
 .tweet {
 	overflow-wrap: break-word;

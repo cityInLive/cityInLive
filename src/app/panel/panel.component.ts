@@ -21,6 +21,7 @@ export class PanelComponent implements OnInit {
 	public cityRegion: string;
 	public lat:        number;
 	public lng:        number;
+	public bounds:     any;
 	public showPanel:  boolean;
 
 	public weather:   Weather;
@@ -50,17 +51,18 @@ export class PanelComponent implements OnInit {
 
 	public ngOnInit() {
 		this.showPanel = false;
-		//this.debug();
+		this.debug();
 	}
 
 	public debug() {
-		this.showCity("Paris", 48.86666, 2.333333, "Île-De-France");
+		this.showCity("Paris", 48.86666, 2.333333, "Île-De-France", null);
 	}
 
-	public showCity(cityName: string, lat: number, lng: number, cityRegion: string) {
+	public showCity(cityName: string, lat: number, lng: number, cityRegion: string, bounds: any) {
 		this.cityName   = cityName;
 		this.lat        = lat;
 		this.lng        = lng;
+		this.bounds     = bounds;
 		this.showPanel  = true;
 		this.cityRegion = cityRegion;
 		this.getModulesInfos();
