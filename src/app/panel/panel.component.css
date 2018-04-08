@@ -306,7 +306,7 @@
 	margin: 5px;
 	height: 100%;
 	overflow: scroll;
-	margin-bottom: 100px;
+	/*margin-bottom: 100px;*/ /*Faudrait plutot virer le .scrollable quand on arrive en bas*/
 }
 .twitter .scrollable {
 	background-image: linear-gradient(to bottom,

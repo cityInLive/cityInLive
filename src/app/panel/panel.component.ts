@@ -62,7 +62,7 @@ export class PanelComponent implements OnInit {
 
 	public ngOnInit() {
 		this.showPanel = false;
-		this.debug();
+		//this.debug();
 	}
 
 	public debug() {
