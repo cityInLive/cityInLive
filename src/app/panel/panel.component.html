@@ -1,6 +1,6 @@
 <div id="SimpleSmoothScroll"></div>
 <div id='panelArea' class="panelArea" [hidden]="!showPanel">
-	<div id="title-area" (click)='returnSearch()'>
+	<div id="title-area" (click)='rerender()'>
 		{{cityName}}
 	</div>
 	<div id="module-area">
@@ -72,9 +72,10 @@
 				<div class="scrollable"></div>
 			</div>
 		</div>
-		<div class="module wikipedia" boundSensor>
+		<div class="module wikipedia" boundSensor #wikipediaM>
 			<div class="module-title">Informations</div>
 			<div class="module-content">
+				{{makeItBug}}
 				<div class="wikipedia-image">
 					<img src="{{wikipedia.imageURL}}" alt="Wikipedia image for {{cityName}}"/>
 					{{wikipedia.imageDesc}}

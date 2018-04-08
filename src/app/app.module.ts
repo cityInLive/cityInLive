@@ -3,6 +3,8 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router' ;
+
 
 // Google Maps
 import { AgmCoreModule } from '@agm/core';
@@ -30,10 +32,16 @@ import { PanelComponent } from './panel/panel.component';
 	HttpModule,
 	LinkyModule,
 	BoundSensorModule,
+	RouterModule,
 	AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCjd71SfnccCzf95_eYf9eTzOOvr2d2Xyg',
 	  libraries: ["places"]
   	}),
+	RouterModule.forRoot([
+		{ path: "", component: AppComponent},
+		{ path: "index", component: PanelComponent},
+		{ path: "module", component: PanelComponent}
+	])
   ],
   declarations: [
 	AppComponent,

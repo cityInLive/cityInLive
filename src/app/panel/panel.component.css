@@ -252,6 +252,9 @@
 .weather-actual .weather-temp {
 	font-weight: bold;
 }
+.weather-desc:first-letter{
+	text-transform: capitalize
+}
 
 .weather-forecasts {
 	display: flex;

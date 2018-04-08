@@ -23,6 +23,11 @@ export class Wikipedia extends Module {
 
 	public async get(panel: PanelComponent) {
 		let o = this;
+
+		o.imageURL = "";
+		o.imageDesc = "";
+		o.description = "";
+
 		this.requestFromName(this.MODULE_NAME, panel.cityName + "," + panel.cityRegion, function(data: any) {
 			o.imageURL     = data.image.url;
 			o.imageDesc    = data.image.desc;
@@ -30,6 +35,10 @@ export class Wikipedia extends Module {
 			o.informations = o.ordered(data.info);
 		});
 		panel.wikipediaH = 0;
+		//panel.makeItBug  = "CHARGEMENT\n".repeat(1000);
+	//	let old = panel.wikipediaM.nativeElement.style.innerHTML;
+	//	panel.wikipediaM.nativeElement.style.innerText = "dfsf";
+//		panel.wikipediaM.nativeElement.dispatchEvent(new Event('resize'));
 
 	}
 

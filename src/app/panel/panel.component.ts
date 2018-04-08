@@ -1,7 +1,8 @@
-import { Component, OnInit, NgZone, HostListener,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, NgZone, HostListener, ChangeDetectorRef } from '@angular/core';
 import { SimpleSmoothScrollService, SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 import { Http, Response } from '@angular/http';
 import { ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 import { Wikipedia } from './modules/Wikipedia';
@@ -35,16 +36,19 @@ export class PanelComponent implements OnInit {
 	public mapH :number;
 	public mapW :number;
 
-	@ViewChild('cinemaM') cinemaM:   ElementRef;
-	@ViewChild('mapM') mapM:         ElementRef;
-	@ViewChild('weatherM') weatherM: ElementRef;
+	@ViewChild('wikipediaM') wikipediaM: ElementRef;
+	@ViewChild('cinemaM') cinemaM:       ElementRef;
+	@ViewChild('mapM') mapM:             ElementRef;
+	@ViewChild('weatherM') weatherM:     ElementRef;
 
+	public makeItBug: string;
 
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
 		private zone: NgZone,
 		private http: Http,
-		public cd : ChangeDetectorRef
+		public cd : ChangeDetectorRef,
+		public router: Router
 		) {
 			this.wikipedia  = new Wikipedia(http);
 			this.weather    = new Weather(http);
@@ -52,12 +56,29 @@ export class PanelComponent implements OnInit {
 			this.instagram  = new Instagram(http);
 			this.wikipediaH = 0;
 			this.instagramH = 0;
+			this.makeItBug  = "";
 	}
 
 	@HostListener('resize', ['$event'])
 	public onResize(event) {
+		console.log("GOOOOOD");
+		console.log(event.detail);
+		this.makeItBug  = "";
 		this.wikipediaH = event.detail.height;
 		this.instagramH = this.weatherM.nativeElement.offsetHeight + this.mapM.nativeElement.offsetHeight + 8;
+	}
+
+	public rerender() {/*
+		if (this.router.navigated === false) {
+    // Case when route was not used yet
+    this.router.navigateByUrl(`/module`);
+  } else {
+    // Case when route was used once or more
+    this.router.navigateByUrl(`/index`).then(
+      () => {
+        this.router.navigateByUrl(`/module`);
+	});
+}*/window.location.reload();
 	}
 
 	public ngOnInit() {
