@@ -29,7 +29,7 @@ export class Tweet {
 			let o = this;
 			this.requestFromPos(this.MODULE_NAME, panel.lat, panel.lng, function(data: any) {
 				o.tweets = [];
-
+				console.log(data);
 				for(let tweet of data.tweets) {
 					o.tweets.push(new Tweet(
 						tweet.name,
