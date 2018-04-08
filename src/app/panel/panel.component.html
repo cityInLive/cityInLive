@@ -1,9 +1,9 @@
 <div id="SimpleSmoothScroll"></div>
 <div id='panelArea' class="panelArea" [hidden]="!showPanel">
-	<div id="title-area" [ngClass]="{'fixed': fixedBar}" (click)='returnSearch()'>
+	<div id="title-area" (click)='returnSearch()'>
 		{{cityName}}
 	</div>
-	<div id="module-area" [ngClass]="{'fixed': fixedBar}">
+	<div id="module-area">
 		<div class="module weather">
 			<div class="module-title">Méteo</div>
 			<div class="module-content">

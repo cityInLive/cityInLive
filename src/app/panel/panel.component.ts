@@ -22,7 +22,6 @@ export class PanelComponent implements OnInit {
 	public lat:        number;
 	public lng:        number;
 	public showPanel:  boolean;
-	public fixedBar:   boolean;
 
 	public weather:   Weather;
 	public wikipedia: Wikipedia;
@@ -48,23 +47,7 @@ export class PanelComponent implements OnInit {
 
 	public ngOnInit() {
 		this.showPanel = false;
-		this.fixedBar  = false;
 		this.debug();
-	}
-
-	@HostListener('window:scroll', [])
-	public onWindowScroll() {
-		if(this.showPanel) {
-			let panelAreaPos = document.getElementById('module-area').getBoundingClientRect();
-			if(panelAreaPos.top < 40) {
-				if(!this.fixedBar)
-					this.fixedBar = true;
-			}
-			else {
-				if(this.fixedBar)
-					this.fixedBar = false;
-			}
-		}
 	}
 
 	public debug() {
