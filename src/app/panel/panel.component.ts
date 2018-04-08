@@ -50,7 +50,7 @@ export class PanelComponent implements OnInit {
 
 	public ngOnInit() {
 		this.showPanel = false;
-		this.debug();
+		//this.debug();
 	}
 
 	public debug() {
@@ -78,8 +78,8 @@ export class PanelComponent implements OnInit {
 	}
 
 	public scroll() {
-		//window.location.hash = "#SimpleSmoothScroll";
-		//this.smooth.smoothScrollToAnchor();
+		window.location.hash = "#SimpleSmoothScroll";
+		this.smooth.smoothScrollToAnchor();
 
 
 
