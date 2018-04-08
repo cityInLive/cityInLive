@@ -112,6 +112,15 @@
 	background-color: var(--color-cinema);
 }
 
+.scrollable {
+	margin: 0px;
+	padding: 0px;
+	position: sticky;
+	bottom: 0px;
+	height: 60px;
+	width: 100%;
+}
+
 @media (max-width: 640px) {
 	#module-area {
 		flex-direction: column;
@@ -290,15 +299,18 @@
 /**
  * Twitter
  */
+.twitter > .module-content {
+ 	margin: 0px;
+}
 .tweets {
+	margin: 5px;
 	height: 100%;
 	overflow: scroll;
 	margin-bottom: 100px;
 }
-
-.twitter {
+.twitter .scrollable {
 	background-image: linear-gradient(to bottom,
-	   rgba(255, 255, 255, 0.0) 95%,
+	   rgba(255, 255, 255, 0.0) 50%,
 	   rgba(29, 161, 242,  0.2)
 	);
 }
@@ -382,14 +394,26 @@
 	height: 400px;
  	overflow: scroll;
 }
+.instagram .scrollable {
+	background-image: linear-gradient(to bottom,
+	   rgba(255, 255, 255, 0.0) 50%,
+	   rgba(201, 48, 219,  0.2)
+	);
+}
 .instagram > .module-content {
 	margin: 0;
 	padding: 0;
 }
 .pictures {
+	background-color: var(--color-instagram);
+	font-size: 0pt;
+	display: flex;
+	flex-direction: column;
 	height: 100%;
 }
 .picture {
-	margin: 0;
-	padding: 0;
+	display: inline-block;
+	margin: 0px;
+	margin-bottom: 1px;
+	padding: 0px;
 }
