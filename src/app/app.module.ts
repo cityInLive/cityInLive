@@ -13,6 +13,9 @@ import { SimpleSmoothScrollModule } from 'ng2-simple-smooth-scroll';
 // URLs to links
 import { LinkyModule } from 'angular-linky';
 
+// Events when div resizes
+import { BoundSensorModule } from 'angular-bound-sensor';
+
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { PanelComponent } from './panel/panel.component';
@@ -26,6 +29,7 @@ import { PanelComponent } from './panel/panel.component';
 	SimpleSmoothScrollModule,
 	HttpModule,
 	LinkyModule,
+	BoundSensorModule,
 	AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCjd71SfnccCzf95_eYf9eTzOOvr2d2Xyg',
 	  libraries: ["places"]

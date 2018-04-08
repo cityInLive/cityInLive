@@ -1,5 +1,5 @@
 <div id="SimpleSmoothScroll"></div>
-<div id='panelArea' class="panelArea" *ngIf="showPanel">
+<div id='panelArea' class="panelArea" [hidden]="!showPanel">
 	<div id="title-area" [ngClass]="{'fixed': fixedBar}" (click)='returnSearch()'>
 		{{cityName}}
 	</div>
@@ -34,7 +34,7 @@
 			<div class="module-content">
 			</div>
 		</div>
-		<div class="module twitter">
+		<div class="module twitter" [style.height.px]="wikipediaH">
 			<div class="module-title">Twitter</div>
 			<div class="module-content">
 				<div class="tweets">
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="module wikipedia">
+		<div class="module wikipedia" boundSensor>
 			<div class="module-title">Informations</div>
 			<div class="module-content">
 				<div class="wikipedia-image">

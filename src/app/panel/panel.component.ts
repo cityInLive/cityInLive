@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone, HostListener } from '@angular/core';
 import { SimpleSmoothScrollService, SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 import { Http, Response } from '@angular/http';
+import { ElementRef, ViewChild } from '@angular/core';
+
 
 import { Wikipedia } from './modules/Wikipedia';
 import { Weather } from './modules/Weather';
@@ -26,14 +28,22 @@ export class PanelComponent implements OnInit {
 	public wikipedia: Wikipedia;
 	public twitter:   Twitter;
 
+	public wikipediaH: number;
+
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
 		private zone: NgZone,
 		private http: Http
 		) {
-			this.wikipedia = new Wikipedia(http);
-			this.weather   = new Weather(http);
-			this.twitter   = new Twitter(http);
+			this.wikipedia  = new Wikipedia(http);
+			this.weather    = new Weather(http);
+			this.twitter    = new Twitter(http);
+			this.wikipediaH = 0;
+	}
+
+	@HostListener('resize', ['$event'])
+	public onResize(event) {
+		this.wikipediaH = event.detail.height;
 	}
 
 	public ngOnInit() {
@@ -77,10 +87,10 @@ export class PanelComponent implements OnInit {
 	}
 
 	public getModulesInfos() {
-
 		this.twitter.get(this);
 		this.wikipedia.get(this);
 		this.weather.get(this);
+
 		//this.weather.get(this);
 		//this.twitter.get(this);
 	}
