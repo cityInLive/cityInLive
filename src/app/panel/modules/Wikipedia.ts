@@ -29,6 +29,8 @@ export class Wikipedia extends Module {
 			o.description  = data.desc;
 			o.informations = o.ordered(data.info);
 		});
+		panel.wikipediaH = 0;
+
 	}
 
 	public ordered(value: any) {

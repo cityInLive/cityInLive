@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, HostListener } from '@angular/core';
+import { Component, OnInit, NgZone, HostListener,ChangeDetectorRef } from '@angular/core';
 import { SimpleSmoothScrollService, SimpleSmoothScrollOption } from 'ng2-simple-smooth-scroll';
 import { Http, Response } from '@angular/http';
 import { ElementRef, ViewChild } from '@angular/core';
@@ -28,11 +28,14 @@ export class PanelComponent implements OnInit {
 	public twitter:   Twitter;
 
 	public wikipediaH: number;
+	public mapH :number;
+	public mapW :number;
 
 	public constructor(
 		private smooth: SimpleSmoothScrollService,
 		private zone: NgZone,
-		private http: Http
+		private http: Http,
+		public cd : ChangeDetectorRef
 		) {
 			this.wikipedia  = new Wikipedia(http);
 			this.weather    = new Weather(http);
@@ -65,7 +68,6 @@ export class PanelComponent implements OnInit {
 	}
 
 	public returnSearch() {
-		//this.showPanel = false;
 		this.smooth.smoothScrollToTop();
 	}
 
@@ -73,14 +75,14 @@ export class PanelComponent implements OnInit {
 		this.twitter.get(this);
 		this.wikipedia.get(this);
 		this.weather.get(this);
-
-		//this.weather.get(this);
-		//this.twitter.get(this);
 	}
 
 	public scroll() {
-		window.location.hash = "#SimpleSmoothScroll";
-		this.smooth.smoothScrollToAnchor();
+		//window.location.hash = "#SimpleSmoothScroll";
+		//this.smooth.smoothScrollToAnchor();
+
+
+
 		//window.location.hash = "";
 		//document.getElementById("SimpleSmoothScroll").scrollIntoView();
 	}

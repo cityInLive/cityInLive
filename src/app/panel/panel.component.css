@@ -59,7 +59,7 @@
 }
 
 .module-content {
-	padding: 5px;
+	margin: 5px;
 }
 
 .twitter {
@@ -116,16 +116,16 @@
 		flex-direction: column;
 	}
 	.module {
-		width: auto;
+
 	}
 	.wikipedia {
-		order: 1;
+		order: 3;
 	}
 	.weather {
-		order: 2;
+		order: 1;
 	}
 	.map {
-		order: 3;
+		order: 2;
 	}
 	.instagram {
 		order: 4;
@@ -137,7 +137,27 @@
 		order: 6;
 	}
 }
-@media (min-width: 640px) {
+@media (max-width: 920px) {
+	.wikipedia {
+		order: 5;
+	}
+	.weather {
+		order: 1;
+	}
+	.map {
+		order: 3;
+	}
+	.instagram {
+		order: 4;
+	}
+	.cinema {
+		order: 2;
+	}
+	.twitter {
+		order: 6;
+	}
+}
+@media (min-width: 920px) {
 	.weather {
 		grid-row-end: span 1;
 	}
@@ -167,22 +187,27 @@
 /**
  * Weather
  */
+.weather {
+}
 .weather > .module-content {
 	height: 100%;
+	overflow: hidden;
+
 }
 .weather-content {
+	margin-bottom: 20px;
+
 	justify-content: center;
-	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
 	height: 100%;
+	min-height: 100%;
 }
 
 .weather-actual {
 	display: flex;
 	text-align: left;
 	font-size: 12pt;
-	align-items: center;
 }
 
 .weather-image {
@@ -249,6 +274,7 @@
 }
 
 .tweet {
+	overflow-wrap: break-word;
 	font-size: 11pt;
 }
 
@@ -306,4 +332,28 @@
 
 .tweet-likes {
 	background-image: url('../../assets/images/twitter/like.png');
+}
+
+
+/**
+ * Map
+ */
+.map {
+	height: 750px;
+	background-color: yellow;
+}
+.map > .module-content {
+	background-color: blue;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: calc(100% - 33px); /* rhaaa ....... */
+	overflow: hidden;
+}
+
+.module-map {
+	background-color: gray;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 }
