@@ -1,6 +1,14 @@
-# live-city
+# liveCity
 
-## Development
+Site disponnible à : [https://livecity.vlntn.pw/](https://livecity.vlntn.pw/).
+
+Recherche d'une ville en France. Ensuite, affichage des informations sur la ville, de la météo, de tweets, et de la carte.
+A venir : Séances de cinéma, photos de la ville.
+
+## Développement
+
+Les APIs étant accessible en SSL uniquement, vous devez lancer Angular avec des certificats SSL.
+Les commandes suivantes installent le nécéssaire, génèrent un certificat de test, et lancent le serveur.
 
 ```shell
 npm install
