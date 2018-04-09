@@ -1,6 +1,6 @@
 # liveCity
 
-Site disponnible à : [https://livecity.vlntn.pw/](https://livecity.vlntn.pw/).
+Site disponible à : [https://livecity.vlntn.pw/](https://livecity.vlntn.pw/).
 
 Recherche d'une ville en France. Ensuite, affichage des informations sur la ville, de la météo, de tweets, et de la carte.
 A venir : Séances de cinéma, photos de la ville.
