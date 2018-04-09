@@ -78,7 +78,7 @@ export class PanelComponent implements OnInit {
       () => {
         this.router.navigateByUrl(`/module`);
 	});
-}*/window.location.reload();
+}*///window.location.reload();
 	}
 
 	public ngOnInit() {

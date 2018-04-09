@@ -33,8 +33,10 @@ export class Wikipedia extends Module {
 			o.imageDesc    = data.image.desc;
 			o.description  = data.desc;
 			o.informations = o.ordered(data.info);
+
+			panel.wikipediaH = panel.wikipediaM.nativeElement.offsetHeight;
 		});
-		panel.wikipediaH = 0;
+		//panel.wikipediaH = 0;
 		//panel.makeItBug  = "CHARGEMENT\n".repeat(1000);
 	//	let old = panel.wikipediaM.nativeElement.style.innerHTML;
 	//	panel.wikipediaM.nativeElement.style.innerText = "dfsf";
